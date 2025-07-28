@@ -260,7 +260,7 @@ def delete_order(id):
 with app.app_context():
     db.create_all()
     # This Command we can use if we want to delete any particular table from database
-    # Order.__table__.drop(db.engine)
+    # tableName.__table__.drop(db.engine)
 
 if __name__ == '__main__':
     
