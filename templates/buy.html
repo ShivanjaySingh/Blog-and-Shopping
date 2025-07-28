@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Product - Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .checkout-card {
+      max-width: 700px;
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .product-image {
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .btn-checkout {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card checkout-card p-4">
+      <h3 class="text-center mb-4">Checkout</h3>
+
+      <!-- Product Summary -->
+      <div class="d-flex align-items-center mb-4">
+        <img src="/static/Product-image-1.png" alt="Product Image" class="product-image me-4">
+        <div>
+          <h5>{{product.product_name}}</h5>
+          <!-- <p class="text-muted">Bluetooth 5.0 | Noise Cancelling</p> -->
+          <p class="text-muted">{{product.product_desc[:30]+"..."}}</p>
+          <h6>₹{{product.product_price}}</h6>
+        </div>
+      </div>
+
+      <!-- Customer Info -->
+      <form action="/buy/{{product.product_name}}" method="POST">
+        <div class="hidden">
+          <input type="hidden" name="product" value="{{ product.product_name }}">
+          <input type="hidden" name="amount" value="{{ product.product_price }}">
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" name="mobile" placeholder="Enter mobile number" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Shipping Address</label>
+          <textarea class="form-control" rows="3" name="address" placeholder="Complete address with pincode" required></textarea>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="mb-3">
+          <label class="form-label">Payment Method</label>
+          <select class="form-select" name="payment-mode" required>
+            <!-- <option selected disabled>Credit/Debit Card</option> -->
+            <option selected disabled>UPI (Google Pay / PhonePe)</option>
+            <option selected disabled>Select a payment option</option>
+            <option>Cash on Delivery</option>
+          </select>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-checkout btn-lg mt-3">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

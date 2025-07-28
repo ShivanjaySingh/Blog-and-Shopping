@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Blog Title {% endblock title %}
+{% block body %}
+
+<div class="row">
+  <center><h1>All Blogs</h1></center>
+  <br><br><hr>
+  {% if blogs|length == 0 %}
+    <div class="alert alert-danger" role="alert">
+      This is a danger alert—check it out!
+    </div>
+  {% else %}  
+    {% for blog in blogs %}
+      <div class="col-md-3 mb-3">
+        <div class="card text-bg-secondary h-100">
+          <img src="static/Shri-Ram-Darbar.webp" class="card-img-top" alt="Blog Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <p class="card-text">{{ blog.content[:70] + '.....' }}</p>
+            <a href="/blog/{{blog.title}}" class="btn btn-outline-info">Read More</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+{% endblock body %}

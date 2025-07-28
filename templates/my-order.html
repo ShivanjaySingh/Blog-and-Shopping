@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block head %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .order-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      padding: 25px;
+      transition: 0.3s ease;
+    }
+    .order-card:hover {
+      transform: scale(1.01);
+    }
+    .order-status {
+      font-weight: bold;
+    }
+    .status-delivered {
+      color: green;
+    }
+    .status-pending {
+      color: orange;
+    }
+    .status-cancelled {
+      color: red;
+    }
+    .product-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .order-header {
+      font-size: 22px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+  </style>
+{% endblock head %}
+{% block body %}
+
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">🛒 My Orders</h2>
+
+    <!-- Order Item Start -->
+     {% if order|length == 0 %}
+        <div class="alert alert-success" role="alert">
+          Your order section is empty,<br>
+          You did not order anything yet, <br>
+          Order Now!!!
+        </div>
+
+    {% else %}
+    {% for orders in order %}
+    <div class="order-card row align-items-center">
+      <div class="col-md-2 text-center">
+        <img src="/static/Product-image-1.png" alt="Product" class="product-img">
+      </div>
+      <div class="col-md-7">
+        <a href="/shop" style="text-decoration: none; color: black;"><h5>{{orders.order_product}}</h5></a>
+        <p class="mb-1">Order ID: <strong>#ORD{{orders.order_id}}</strong></p>
+        <p class="mb-1">Ordered on: {{orders.order_date}}</p>
+        <p class="mb-0">Delivered to: {{orders.order_address}}</p>
+      </div>
+      <div class="col-md-3 text-md-end">
+        <p class="order-status status-delivered">Your Order</p>
+        <p><strong>₹{{orders.order_amount}}</strong></p>
+        <a href="/order/delete/{{orders.order_id}}" class="btn btn-outline-primary btn-sm">Delete Order</a>
+      </div>
+    </div>
+    <!-- Order Item End -->
+     {% endfor %}
+     {% endif %}
+
+    <!-- Another Order -->
+    <!-- <div class="order-card row align-items-center">
+      <div class="col-md-2 text-center">
+        <img src="https://via.placeholder.com/100" alt="Product" class="product-img">
+      </div>
+      <div class="col-md-7">
+        <h5>Smart Fitness Band</h5>
+        <p class="mb-1">Order ID: <strong>#ORD123457</strong></p>
+        <p class="mb-1">Ordered on: 21 July 2025</p>
+        <p class="mb-0">Delivery to: 101 City Center, Kolkata</p>
+      </div>
+      <div class="col-md-3 text-md-end">
+        <p class="order-status status-pending">Out for Delivery</p>
+        <p><strong>₹1,999</strong></p>
+        <a href="#" class="btn btn-outline-primary btn-sm">Track Order</a>
+      </div>
+    </div> -->
+
+    <!-- Cancelled Order -->
+    <!-- <div class="order-card row align-items-center">
+      <div class="col-md-2 text-center">
+        <img src="https://via.placeholder.com/100" alt="Product" class="product-img">
+      </div>
+      <div class="col-md-7">
+        <h5>Gaming Mouse</h5>
+        <p class="mb-1">Order ID: <strong>#ORD123458</strong></p>
+        <p class="mb-1">Ordered on: 12 July 2025</p>
+        <p class="mb-0">Delivery to: 77 MG Road, Mumbai</p>
+      </div>
+      <div class="col-md-3 text-md-end">
+        <p class="order-status status-cancelled">Cancelled</p>
+        <p><strong>₹999</strong></p>
+        <a href="#" class="btn btn-outline-secondary btn-sm">Reorder</a>
+      </div>
+    </div> -->
+
+  </div>
+
+  {% endblock body %}

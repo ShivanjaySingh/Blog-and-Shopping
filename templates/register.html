@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock title %}
+
+{% block body %}
+
+<center><h2>Register Now!!!</h2></center>
+<hr>
+
+<div class="container md-3">
+<form action="/register" method="POST">
+
+    <div class="alert alert-warning" role="alert">
+        Login if you already have an account
+      </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter Your Name">
+      </div>
+      <br>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+    </div>
+    <br>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-success">Register</button>
+    <a href="/login" type="button" class="btn btn-outline-info">Login</a>
+  </form>
+</div>
+
+{% endblock body %}

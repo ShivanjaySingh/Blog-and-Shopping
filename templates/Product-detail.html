@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+{% block title %}Product Detail - Blog Site{% endblock title %}
+{% block head %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .product-image {
+      border-radius: 10px;
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .price {
+      font-size: 1.8rem;
+      color: #28a745;
+      font-weight: bold;
+    }
+    .btn-buy {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-buy:hover {
+      background-color: #218838;
+    }
+    .btn-cart {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-cart:hover {
+      background-color: #0069d9;
+    }
+  </style>
+{% endblock head %}
+{% block body %}
+
+<div class="container my-5">
+  <div class="row">
+    
+    <!-- Product Image -->
+    <div class="col-md-6">
+      <img src="/static/Product-image-1.png" alt="Product Image" class="product-image shadow-sm">
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-md-6 mt-4 mt-md-0">
+      <h2>{{product.product_name}}</h2>
+      <p class="price">₹ {{product.product_price}}</p>
+      <p class="text-muted">
+        {{product.product_desc}}
+      </p>
+
+      <div class="d-flex gap-3 mt-4">
+        <a href="/buy/{{product.product_name}}" class="btn btn-buy px-4">Buy Now</a>
+        <a href="#" class="btn btn-cart px-4">Add to Cart</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Optional Additional Info -->
+  <div class="row mt-5">
+    <div class="col">
+      <h4>Product Details</h4>
+      <ul>
+        <li>High quality material</li>
+        <li>Available in multiple sizes</li>
+        <li>Easy to use and maintain</li>
+        <li>1-year warranty included</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

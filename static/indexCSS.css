@@ -1,0 +1,29 @@
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+      background: url('https://source.unsplash.com/1600x600/?blog,typing') center center/cover no-repeat;
+      color: white;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 2px 2px 6px #000;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .blog-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .footer {
+      background: #f8f9fa;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 50px;
+    }

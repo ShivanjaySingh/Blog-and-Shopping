@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} Edit Products {% endblock title %}
+{% block body %}
+
+{% if regis %}
+
+<center><h1>Edit Products</h1></center>
+<br><hr>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> <!-- You can reduce this to col-md-3 for narrower -->
+      <p>Hii {{regis.name}}</p>
+      <p>email: {{regis.email}}</p>
+      <p><a href="/logout" type="button" class="btn btn-outline-danger">Logout</a></p>
+      
+      <form action="/admin/products/edit/{{product.product_id}}" method="POST">
+    <div class=" mb-3">
+      <label for="product-name" class="form-label">Product Name</label>
+      <input type="text" name="product-name" class="form-control" id="product-name" value="{{product.product_name}}" placeholder="Enter Product Name">
+    </div>
+    <div class="mb-3">
+        <label for="product-desc" class="form-label">Product Description</label>
+        <textarea name="product-desc" class="form-control" id="product-desc" rows="3" placeholder="Enter Product Description">{{product.product_desc}}</textarea>
+    </div>
+    <div class=" mb-3">
+      <label for="product-price" class="form-label">Product Price</label>
+      <input type="number" name="product-price" class="form-control" id="product-price" value="{{product.product_price}}" placeholder="Enter Product Price (In Indian Rupees)">
+    </div>
+      <div class=" mb-3">
+        <button type="submit" class="btn btn-outline-info">Edit Product</button>
+        <a href="/admin" type="button" class="btn btn-outline-success">Edit Blogs</a>
+      </div>
+    
+    </form>
+  </div>
+  </div>
+  </div>
+
+  {% else %}
+
+  <div class="alert alert-danger" role="alert">
+    This page is not authorirized for you, Please leave this page and go back 
+  </div>
+
+  {% endif %}
+{% endblock body %}

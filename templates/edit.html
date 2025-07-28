@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Admin{% endblock title %}
+{% block body %}
+
+{% if regis %}
+
+<center><h1>Edit Blog</h1></center>
+<br><hr>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> <!-- You can reduce this to col-md-3 for narrower -->
+      <p>Hii {{regis.name}}</p>
+      <p>email: {{regis.email}}</p>
+      <p><a href="/logout" type="button" class="btn btn-outline-danger">Logout</a></p>
+      
+      <form action="/edit/{{blog.title}}" method="POST">
+    <div class=" mb-3">
+      <label for="blog-title" class="form-label">Blog Title</label>
+      <input type="text" name="title" class="form-control" id="blog-title" placeholder="Enter Heading for Blog" value="{{blog.title}}">
+    </div>
+    <div class="mb-3">
+      <label for="Blog-Content" class="form-label">Blog-Content</label>
+      <textarea name="content" class="form-control" id="Blog-Content" rows="3" placeholder="Enter Content">{{blog.content}}</textarea>
+    </div>
+      <div class=" mb-3">
+        <button type="submit" class="btn btn-outline-info">Submit</button>
+      </div>
+    
+    </form>
+  </div>
+  </div>
+  </div>
+
+  <hr><br><br>
+
+  {% else %}
+
+  <div class="alert alert-danger" role="alert">
+    This page is not authorirized for you, Please leave this page and go back 
+  </div>
+
+  {% endif %}
+
+{% endblock body %}
