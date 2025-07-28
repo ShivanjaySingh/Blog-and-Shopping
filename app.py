@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, send_file, abort, flash
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.utils import secure_filename
+# from werkzeug.utils import secure_filename    # No need to use it and uncomment it
 import io
 from datetime import datetime
 
